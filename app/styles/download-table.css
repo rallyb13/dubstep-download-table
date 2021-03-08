@@ -6,6 +6,17 @@
 .options-menu {
   font-size: 18px;
   color: #888888;
+  line-height: 24px;
+}
+
+.count {
+  padding: 0 32px 0 8px;
+}
+
+.download-button::before {
+  content: '\2913';
+  padding: 4px;
+  color: #4b4b4b;
 }
 
 table {
@@ -16,12 +27,34 @@ table {
 tr {
   border-top: 1px solid #cdcdcd;
   display: flex;
+  line-height: 24px;
+}
+
+tr.selected {
+  background-color: #eeeeee;
+}
+
+
+tr.download-item:hover {
+  background-color: #f5f5f5;
 }
 
 td, th {
   width: 15%;
   text-align: left;
   position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+th {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+td.status, th.status {
+  padding-left: 24px;
 }
 
 td.available::before {
@@ -31,8 +64,8 @@ td.available::before {
   width: 16px;
   height: 16px;
   position: absolute;
-  left: -22px;
-  top: 2px;
+  left: 0;
+  top: 3px;
   border-radius: 100%;
 }
 

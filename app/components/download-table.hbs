@@ -1,27 +1,39 @@
 <div class="download-table">
   <div class="options-menu">
-    {{!-- checkbox --}}
-    <span>Selected {{!-- count --}}</span>
-    <span>{{!-- icon --}} Download Selected</span>
+    {{input
+      type="checkbox"
+      indeterminate=this.isIndeterminate
+      checked=this.isAllChecked
+      change=(action "handleSelectAll")}}
+    <span class="count">
+      {{if this.hasSelectedItems (concat "Selected " this.selectedCount) "None Selected"}}
+    </span>
+    {{#if this.hasSelectedItems}}
+      <span class="download-button" {{action "downloadSelected"}}>Download Selected</span>
+    {{/if}}
   </div>
   <table>
     <thead>
       <tr>
-        <th class="lean-cell">x</th>
+        <th class="lean-cell"></th>
         <th>Name</th>
         <th>Device</th>
         <th class="wide-cell">Path</th>
-        <th>Status</th>
+        <th class="status">Status</th>
       </tr>
     </thead>
     <tbody>
-      {{#each this.data as |item|}}
-        <tr>
-          <td class="lean-cell"></td>
+      {{#each this.formattedData as |item|}}
+        <tr
+          class={{concat "download-item " (if item.isSelected "selected")}}
+          {{action 'handleSelection' item}}>
+          <td class="lean-cell">
+            {{input type="checkbox" checked=item.isSelected}}
+          </td>
           <td>{{item.name}}</td>
           <td>{{item.device}}</td>
           <td class="wide-cell">{{item.path}}</td>
-          <td class="{{if (eq item.status "available") "available"}}">
+          <td class="{{concat "status " (if (eq item.status "Available") "available")}}">
             {{item.status}}
           </td>
         </tr>
