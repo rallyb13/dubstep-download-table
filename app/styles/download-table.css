@@ -1,0 +1,33 @@
+.download-table {
+  border: 1px solid #cdcdcd;
+  margin: 5%;
+}
+
+.options-menu {
+  font-size: 18px;
+  color: #888888;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+tr {
+  border-top: 1px solid #cdcdcd;
+  display: flex;
+}
+
+td, th {
+  width: 20%;
+  text-align: left;
+}
+
+
+.wide-cell {
+  width: 40%;
+}
+
+.lean-cell {
+  width: 10%;
+}
