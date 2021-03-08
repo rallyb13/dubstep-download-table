@@ -15,15 +15,17 @@
       </tr>
     </thead>
     <tbody>
-      {{!-- #each --}}
+      {{#each this.data as |item|}}
         <tr>
           <td class="lean-cell"></td>
-          <td></td>
-          <td></td>
-          <td class="wide-cell"></td>
-          <td></td>
+          <td>{{item.name}}</td>
+          <td>{{item.device}}</td>
+          <td class="wide-cell">{{item.path}}</td>
+          <td class="{{if (eq item.status "available") "available"}}">
+            {{item.status}}
+          </td>
         </tr>
-      {{!-- /each --}}
+      {{/each}}
     </tbody>
   </table>
 </div>
